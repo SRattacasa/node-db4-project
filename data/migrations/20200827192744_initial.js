@@ -10,10 +10,10 @@ exports.up = async function(knex) {
        
    })
    await knex.schema.createTable("recipe_ingredients", (table) => {
-       table.increments("id")
+       
        table.integer("recipe_id").references("id").inTable("recipes")
        table.integer("ingredients_id").references("id").inTable("ingredients")
-       table.text("quantity_of_ingredient")
+       table.float("quantity")
 
        table.primary(["recipe_id", "ingredients_id"])
    })
